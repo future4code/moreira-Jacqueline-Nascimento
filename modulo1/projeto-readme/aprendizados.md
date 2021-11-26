@@ -1,0 +1,2 @@
+# Aprendizados da Semana
+Nessa semana de onboarding da ***Labenu***, comecei aprendendo sobre o **slack**, o nosso whatsapp, e o **zoom**, a nossa sala de aula. Depois nos conhecemos melhor e toda nossa diversidade. Em seguida, foi a vez do **Terminal** e seus comandos e logo após aprendemos a diferença entre **Git** e **GitHub**. Por último, foi introduzido o **VS code** para fechar essa semana especial que mostrou o tanto que podemos esperar de aprendizado nesses 6 meses.
