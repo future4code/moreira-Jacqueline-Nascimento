@@ -50,12 +50,15 @@ console.log(typeof nome, typeof idade) //os tipos agora são strings, pois promp
 console.log("Olá", nome, "você tem", idade, "anos")
 
 // 2.
-const estudanteLabenu = prompt("Você é estudante da Labenu? (SIM/NÃO)")
-const roupaAzul = prompt("Você está usando uma roupa azul hoje? (SIM/NÃO)")
-const usaOculos = prompt("Você usa óculos? (SIM/NÃO)")
-console.log("Você é estudante da Labenu?", estudanteLabenu)
-console.log("Você está usando uma roupa azul hoje?", roupaAzul)
-console.log("Você usa óculos?", usaOculos)
+const pergunta1 = "Você é estudante da Labenu?"
+const pergunta2 = "Você está usando uma roupa azul hoje?"
+const pergunta3 = "Você usa óculos?"
+const estudanteLabenu = prompt(pergunta1+" (SIM/NÃO)")
+const roupaAzul = prompt(pergunta2+" (SIM/NÃO)")
+const usaOculos = prompt(pergunta3+" (SIM/NÃO)")
+console.log(pergunta1, estudanteLabenu)
+console.log(pergunta2, roupaAzul)
+console.log(pergunta3, usaOculos)
 
 // 3.
 let a = 10
