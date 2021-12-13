@@ -104,7 +104,8 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-    
+    array.sort((a , b) => {return a-b})
+    return [array[array.length -2], array[1]]
 }
 
 // EXERCÍCIO 11
