@@ -39,7 +39,14 @@ function retornaArrayOrdenado(array) {
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-    
+    const newArray = []
+    for (elemento of array){
+        if (elemento % 2 === 0){
+            newArray.push(elemento)
+        }
+    }
+    return newArray
+    // return array.filter((item) => {return item%2===0})
 }
 
 // EXERCÍCIO 05
