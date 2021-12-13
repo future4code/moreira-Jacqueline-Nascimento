@@ -128,7 +128,10 @@ function retornaPessoasAutorizadas(pessoas) {
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    function validarCondicoes(item){
+        return !(item.altura>=1.5 && item.idade>14 && item.idade<60)
+    }
+    return pessoas.filter(validarCondicoes)
 }
 
 // EXERCÍCIO 14
