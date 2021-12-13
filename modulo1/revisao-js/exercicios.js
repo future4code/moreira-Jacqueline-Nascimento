@@ -21,7 +21,20 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-    
+    // Algoritmo de ordenação BubbleSort
+    const tamanho = array.length
+    let aux
+    for (let i=0;i<tamanho;i++){
+        for (j=0; j<tamanho-i-1;j++){
+            if (array[j]>array[j+1]){
+                aux = array[j]
+                array[j] = array[j+1]
+                array[j+1] = aux
+            }
+        }
+    }
+    return array
+    // return array.sort((a , b) => {return a-b})
 }
 
 // EXERCÍCIO 04
