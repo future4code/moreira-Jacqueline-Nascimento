@@ -51,7 +51,7 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
-    
+    return retornaNumerosPares(array).map((item)=>{return item**2})
 }
 
 // EXERCÍCIO 06
