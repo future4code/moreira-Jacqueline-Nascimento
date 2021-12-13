@@ -148,7 +148,18 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    const vetorDeNomes = consultas.map((item) => {return item.nome})
+    vetorDeNomes.sort()
+    let arrayOrdenado = consultas
+    for (let i=0;i<vetorDeNomes.length;i++){
+        arrayOrdenado[i].nome = vetorDeNomes[i]
+        for (let j=0;j<consultas.length;j++){
+            if (vetorDeNomes[i] === consultas[j].nome){
+                arrayOrdenado[i].dataDaConsulta = consultas[j].dataDaConsulta
+            }
+        }  
+    }
+    return arrayOrdenado
 }
 
 // EXERCÍCIO 15B
