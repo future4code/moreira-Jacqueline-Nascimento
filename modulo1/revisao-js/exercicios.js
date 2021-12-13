@@ -164,5 +164,54 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+    const vetorDeDatas = consultas.map((item) => {return item.dataDaConsulta})
+    function ordenaAnos(a, b){
+        arrayA = a.split("/")
+        arrayB = b.split("/")
+        if (arrayA[2]>arrayB[2]){
+            return 1
+        }
+        else if (arrayA[2]<arrayB[2]){
+            return -1
+        } else {
+            return 0
+        }
+    }
+    function ordenaMeses(a, b){
+        arrayA = a.split("/")
+        arrayB = b.split("/")
+        if (arrayA[1]>arrayB[1]){
+            return 1
+        }
+        else if (arrayA[1]<arrayB[1]){
+            return -1
+        } else {
+            return 0
+        }
+    }
+    function ordenaDias(a, b){
+        arrayA = a.split("/")
+        arrayB = b.split("/")
+        if (arrayA[0]>arrayB[0]){
+            return 1
+        }
+        else if (arrayA[0]<arrayB[0]){
+            return -1
+        } else {
+            return 0
+        }
+    }
+    vetorDeDatas.sort(ordenaDias)
+    vetorDeDatas.sort(ordenaMeses)
+    vetorDeDatas.sort(ordenaAnos)
+    let arrayOrdenado = consultas
+    for (let i=0;i<vetorDeDatas.length;i++){
+        arrayOrdenado[i].dataDaConsulta = vetorDeDatas[i]
+        for (let j=0;j<consultas.length;j++){
+            if (vetorDeDatas[i] === consultas[j].dataDaConsulta){
+                arrayOrdenado[i].nome = consultas[j].nome
+            }
+        }  
+    }
+    return arrayOrdenado
 }
