@@ -51,8 +51,19 @@ input{
     margin-top: 10px;
     margin-bottom: 10px; 
 }
-#botao-add{
+.botao-add{
     background-color: orange;
     color: red;
     margin: 10px 80px;
+}
+
+#sub-link{
+    margin-left: 80vw;
+    color:darkred;
+}
+#botao-list{
+    background-color:lightyellow;
+}
+#informacoes{
+    background-color:khaki;
 }
