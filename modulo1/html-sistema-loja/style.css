@@ -1,0 +1,58 @@
+.cabecalho{
+    color: yellow;
+    background-color: blue;
+}
+.icones-redes{
+    width: 25px;
+    height: 25px;
+}
+.redes-sociais{
+    color: white;
+    display: inline;
+    margin: 10px 10px;
+}
+.titulos{
+    color: navy;
+}
+a{
+    color: orange;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+#rodape{
+    background-color: lightskyblue;
+}
+#destaque{
+    color: red;
+}
+th{
+    padding: 10px 100px;
+    background-color:khaki;
+    color: red;
+}
+td{
+    padding: 10px 100px;
+    background-color: lightyellow;
+}
+.pokemon{
+    font-weight: bold;
+}
+li{
+    color: lightcoral;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+label{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: lightcoral;
+}
+input{
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+#botao-add{
+    background-color: orange;
+    color: red;
+    margin: 10px 80px;
+}
