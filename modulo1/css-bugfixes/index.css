@@ -34,7 +34,7 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    background: white;
 }
 
 .botao-amarelo {
@@ -89,6 +89,11 @@ div img {
     padding: 100px 0;
     font-size: 60px;
     display: block;
+}
+
+.container-do-search img{
+    width: 15px;
+    height: 15px;
 }
 
 
