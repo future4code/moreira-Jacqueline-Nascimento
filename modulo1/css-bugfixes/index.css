@@ -78,11 +78,9 @@ div img {
 }
 #container-de-descricao>ol {
     padding: 15px 0px;
+    margin: 0px 300px;
 }
 
-#container-de-descricao>ol>li {
-    list-style-type: decimal;
-}
 #container-para-comprar {
     background-color: #e7eb90;
 }
