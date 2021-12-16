@@ -91,11 +91,6 @@ div img {
     display: block;
 }
 
-.container-do-search img{
-    width: 15px;
-    height: 15px;
-}
-
 
 /**
   *
@@ -126,6 +121,14 @@ td button {
     color: black;
 }
 
+td button:active{
+    color: white;
+}
+
+td button:hover{
+    background-color: #f8d123;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -144,4 +147,9 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+.container-do-search img{
+    width: 15px;
+    height: 15px;
 }
