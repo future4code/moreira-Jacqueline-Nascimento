@@ -78,7 +78,7 @@ div img {
 }
 #container-de-descricao>ol {
     padding: 15px 0px;
-    margin: 0px 300px;
+    margin: 0px 40vw;
 }
 
 #container-para-comprar {
@@ -164,4 +164,12 @@ td button:hover{
     border-left: none;
     border-right: none;
     border-width: medium;
+}
+
+.container-do-search img:hover{
+    opacity: 0.5;
+}
+
+.container-do-search img:active{
+    opacity: 1;
 }
