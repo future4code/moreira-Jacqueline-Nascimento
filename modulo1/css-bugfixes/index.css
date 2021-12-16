@@ -80,6 +80,9 @@ div img {
     padding: 15px 0px;
 }
 
+#container-de-descricao>ol>li {
+    list-style-type: decimal;
+}
 #container-para-comprar {
     background-color: #e7eb90;
 }
