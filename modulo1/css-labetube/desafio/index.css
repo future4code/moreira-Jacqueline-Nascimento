@@ -1,0 +1,78 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid black;
+}
+
+.tres-colunas{
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px 15px;
+    margin: 15px;
+}
+
+.duas-colunas{
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 15px;
+    margin: 15px;
+}
+
+#first-block {
+    background-color: red;
+    height: 80px;
+    width: 100vw;
+}
+
+.blue-block {
+    background-color: blue;
+    height: 80px;
+}
+
+.yellow-block {
+    background-color: yellow;
+    height: 80px;
+}
+
+.green-block {
+    background-color: green;
+    height: 80px;;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+    height: 240px;
+}
+
+.white-block {
+    background-color: white;
+    height: 80px;
+}
+
+@media screen and (max-device-width : 480px) {
+    /* celulares */
+    .tres-colunas{
+        grid-template-columns: 1fr;
+    }
+    .duas-colunas{
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+/* tablets */
+    .tres-colunas{
+        grid-template-columns: 1fr 1fr;
+    }
+    .green-block{
+        grid-column: 1/-1;
+    }
+}
+    
