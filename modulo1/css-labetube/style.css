@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* #container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+} */
+
+header{
+    background-color: chocolate;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+footer{
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+#grade-de-videos{
+    /* flex-grow: 1; */
+    padding: 10px;
+    margin: 50px 0;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 5px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.link-video{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid lightgreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 5px lightgrey;
+    max-width: 315px;
+}
+
+.link-video:hover{
+    background-color:rgb(197, 246, 197);
+}
+
+.imagem-inicial{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.pagina-detalhe{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.reprodutor-video{
+    align-self: center;
+    flex-grow: 1;
+    padding-top: 10vh;
+}
+.reprodutor-video h3{
+    padding: 10px 0;
+    text-align: center;
+}
+video{
+    max-width: 80vw;
+    max-height: 60vh;
+}
