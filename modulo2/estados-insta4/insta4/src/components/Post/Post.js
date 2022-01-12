@@ -110,14 +110,18 @@ class Post extends React.Component {
     }
 
     let componenteComentario
-    let componenteCompartilhar
+    let componenteCompartilhar1
+    let componenteCompartilhar2
+    let componenteCompartilhar3
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
 
     if(this.state.compartilhando) {
-      componenteCompartilhar = <SecaoCompartilhar aoEnviar={this.aoEnviarComentario}/>
+      componenteCompartilhar1 = <SecaoCompartilhar redesocial={'Instagram'} />
+      componenteCompartilhar2 = <SecaoCompartilhar redesocial={'Facebook'} />
+      componenteCompartilhar3 = <SecaoCompartilhar redesocial={'Twitter'} />
     }
 
     return <PostContainer>
@@ -154,7 +158,9 @@ class Post extends React.Component {
         />
       </PostFooter>
       {componenteComentario}
-      {componenteCompartilhar}
+      {componenteCompartilhar1}
+      {componenteCompartilhar2}
+      {componenteCompartilhar3}
     </PostContainer>
   }
 }
