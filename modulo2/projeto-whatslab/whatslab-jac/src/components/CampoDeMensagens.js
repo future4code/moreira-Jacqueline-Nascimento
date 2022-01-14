@@ -111,7 +111,7 @@ const TituloUsuario = styled.div`
 
 class CampoDeMensagens extends React.Component{
     state = {
-        listaDeConversas: [{usuario:"eu", mensagem:"sasass"},{usuario:"edfd", mensagem:"sdsass"}],
+        listaDeConversas: [],
         inputUsuario: "",
         inputMensagem: ""
     }
