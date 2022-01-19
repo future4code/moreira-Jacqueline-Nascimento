@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Botao from "./components/Botao";
+import IconeX from './img/clear_black.svg'
 
 const Container = styled.div`
   display: flex;
@@ -22,15 +24,18 @@ const InputsContainer = styled.div`
 const ListaContainer = styled.ul`
   padding: 0;
   width: 200px;
+  list-style-type: none;
 `
 const Tarefa = styled.li`
   text-align: left;
   text-decoration: ${({completa})=>(completa ? 'line-through' : 'none')};
 `
-const Botao = styled.button`
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: lavenderblush;
+const TarefaContainer = styled.div`
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
 `
 
 class App extends React.Component {
@@ -53,6 +58,13 @@ class App extends React.Component {
 
     const listaAtualizada = [...this.state.tarefas, novaTarefa]
     this.setState({tarefas: listaAtualizada, inputTexto:''})
+  }
+
+  apagarTarefa = (id) =>{
+    const novaLista = this.state.tarefas.filter((item)=>{
+      return id !== item.id
+    })
+    this.setState({tarefas: novaLista})
   }
 
   mudarTarefa = (id) =>{
@@ -92,9 +104,12 @@ class App extends React.Component {
     })
 
     const renderizarTarefas = listaFiltrada.map(item => {
-      return <Tarefa
+      return <TarefaContainer><Tarefa
       completa={item.completa}
-      onClick={()=>{this.mudarTarefa(item.id)}} >{item.texto}</Tarefa>
+      onClick={()=>{this.mudarTarefa(item.id)}}>
+        {item.texto}</Tarefa>
+        <Botao funcao={()=>{this.apagarTarefa(item.id)}} texto={<img src={IconeX}/>} />
+        </TarefaContainer>
     })
 
 
@@ -103,7 +118,7 @@ class App extends React.Component {
         <h1>Lista de tarefas</h1>
         <InputsContainer>
           <input value={this.state.inputTexto} onChange={this.onChangeTarefa}/>
-          <Botao onClick={this.adicionarTarefa}>Adicionar</Botao>
+          <Botao funcao={this.adicionarTarefa} texto='Adicionar' />
         </InputsContainer>
         <InputsContainer>
           <label htmlFor="">Filtro</label>
