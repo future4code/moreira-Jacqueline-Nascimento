@@ -31,14 +31,19 @@ const Container = styled.div`
         align-self: center;
         color: ${cores.puce};
     }
+    div{
+        display: flex;
+    }
 `
 
 export const CardPlaylist = (props) =>{
     return(
         <Container>
             <h3>{props.nome}</h3>
+            <div>
             <button onClick={()=>{props.apagarPlaylist(props.nome,props.chave)}}><img src={lixo} /></button>
             <button onClick={()=>{props.irParaDetalhes(props.nome,props.chave)}}><img src={iconePlay} /></button>
+            </div>
         </Container>
     )
 }
