@@ -1,23 +1,29 @@
 import React from 'react';
-import { Title, TitleArea } from '../components/StyleGeral';
-// import IconButton from '@mui/material/IconButton';
-// import PeopleIcon from '@mui/icons-material/PeopleAlt';
-// import CheckIcon from '@mui/icons-material/Check';
+import { ContainerHome, Title, TitleArea } from '../components/StyleGeral';
+import IconButton from '@material-ui/core/IconButton';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import CheckIcon from '@material-ui/icons/Check';
+import CardPhoto from '../components/CardPhoto';
 
-export default function Home() {
+export default function Home(props) {
+
+  const profile = () =>{
+    return <CardPhoto newProfile={props.newProfile} name={props.name} />
+  }
+
   return (
-  <div>
+  <ContainerHome>
       <TitleArea>
         <Title>
             <h1 className='pink'>astro</h1>
             <h1 className='orange'>match</h1>
         </Title>
-        {/* <IconButton>
-            <PeopleIcon />
-            <CheckIcon />
-        </IconButton> */}
-      </TitleArea>
-      
-      
-  </div>);
+        <IconButton color='primary' onClick={props.changeMatches}>
+            <PeopleAltIcon />
+            <CheckIcon fontSize='small' />
+        </IconButton>
+      </TitleArea> 
+      <hr></hr>
+      {profile()}
+  </ContainerHome>);
 }
