@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { mainColors } from "../../constants/colors";
 
-export const ContainerTrips = styled.div`
+export const ContainerAdminHome = styled.div`
     display: flex;
     flex-direction: column;
+    text-align: center;
 `
 
-export const ContainerHeaderTrips = styled.div`
+export const ContainerHeaderAdminHome = styled.div`
     height: 120px;
     border-bottom: 1px solid white;
     width: 100%;
@@ -14,13 +15,11 @@ export const ContainerHeaderTrips = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    margin-bottom: 20px;
 `
+
 export const ButtonsHeader = styled.div`
     display: flex;
-`
-export const MainTrips = styled.div`
-    display: flex;
-    flex-direction: column;
 `
 export const TripsArea = styled.div`
     display: flex;

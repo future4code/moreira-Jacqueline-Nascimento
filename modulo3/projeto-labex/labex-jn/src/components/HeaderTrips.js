@@ -2,6 +2,7 @@ import React from 'react'
 import { ButtonsHeader, ContainerHeaderTrips } from './styles/StyleTrips'
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+import IconLabeX from './IconLabeX';
 
 export default function HeaderTrips() {
     const navigate = useNavigate()
@@ -10,9 +11,13 @@ export default function HeaderTrips() {
         navigate(-1)
     }
 
+    const goToApplicationForm = () =>{
+        navigate('/trips/application')
+    }
+
   return (
     <ContainerHeaderTrips>
-        <h1>LabeX</h1>
+        <IconLabeX />
         <ButtonsHeader>
             <Button
             variant="contained"
@@ -21,7 +26,7 @@ export default function HeaderTrips() {
             >
             Voltar
             </Button>
-            <Button color="primary" variant="contained" className="button-green">
+            <Button onClick={goToApplicationForm} color="primary" variant="contained" className="button-green">
                 Inscrever-se
             </Button>
         </ButtonsHeader>

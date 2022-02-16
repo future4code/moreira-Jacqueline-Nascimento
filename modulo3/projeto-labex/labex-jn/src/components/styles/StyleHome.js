@@ -7,13 +7,38 @@ export const ContainerHome = styled.div`
     height: 100%;
 `
 
-export const ButtonArea = styled.div`
-    width: 400px;
+export const LateralMenu = styled.div`
+    width: 350px;
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    img {
+        margin: 40px 0 70px 0;
+        height: 100px;
+        align-self: center;
+        border-radius: 50%;
+    }
 `
+export const ButtonArea = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button:hover{
+        transform: scale(1.2);
+    }
+`
+
 export const ImageArea = styled.div`
     flex-grow: 1;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-image: url(${fundoHome});
+`
+
+export const TitleSubtitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 200px;
 `
