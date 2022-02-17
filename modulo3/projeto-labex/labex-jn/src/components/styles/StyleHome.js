@@ -12,7 +12,6 @@ export const LateralMenu = styled.div`
     display: flex;
     margin: 20px;
     flex-direction: column;
-    /* justify-content: space-around; */
     img {
         margin: 40px 0 70px 0;
         height: 100px;
@@ -26,6 +25,9 @@ export const ButtonArea = styled.div`
     align-items: center;
     button:hover{
         transform: scale(1.2);
+    }
+    #button-trips{
+        width: 200px;
     }
 `
 
@@ -41,4 +43,9 @@ export const TitleSubtitle = styled.div`
     display: flex;
     flex-direction: column;
     height: 200px;
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 `

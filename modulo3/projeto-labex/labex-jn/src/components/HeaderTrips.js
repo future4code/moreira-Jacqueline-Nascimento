@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonsHeader, ContainerHeaderTrips } from './styles/StyleTrips'
+import { ButtonsHeader, ContainerHeader } from './styles/StyleHeader'
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import IconLabeX from './IconLabeX';
@@ -16,7 +16,7 @@ export default function HeaderTrips() {
     }
 
   return (
-    <ContainerHeaderTrips>
+    <ContainerHeader>
         <IconLabeX />
         <ButtonsHeader>
             <Button
@@ -30,6 +30,6 @@ export default function HeaderTrips() {
                 Inscrever-se
             </Button>
         </ButtonsHeader>
-    </ContainerHeaderTrips>
+    </ContainerHeader>
   )
 }

@@ -4,12 +4,14 @@ import {
   ContainerHome,
   ImageArea,
   LateralMenu,
-  TitleSubtitle
+  TitleSubtitle,
 } from "../components/styles/StyleHome";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import foguete from "../assets/foguete.gif"
+import foguete from "../assets/foguete.gif";
 import IconLabeX from "../components/IconLabeX";
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import LockIcon from '@material-ui/icons/Lock';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -19,14 +21,26 @@ export default function HomePage() {
   };
 
   const goToAdmin = () => {
-    navigate("/admin/trips/list")
-  }
+    navigate("/admin/trips/list");
+  };
 
   return (
     <ContainerHome>
       <LateralMenu>
         <TitleSubtitle>
-          <IconLabeX/>
+          <div>
+            <IconLabeX />
+            <Button
+              size="small"
+              onClick={goToAdmin}
+              variant="contained"
+              className="button-white"
+              startIcon={<LockIcon/>}
+            >
+              Admin
+            </Button>
+          </div>
+          
           <h3>
             Viagens Interplanetárias! <br />
             Encontre sua viagem dos sonhos e diga-nos porque você a merece.
@@ -39,11 +53,10 @@ export default function HomePage() {
             color="primary"
             variant="contained"
             className="button-green"
+            id="button-trips"
+            startIcon={<LoyaltyIcon/>}
           >
             Viagens
-          </Button>
-          <Button onClick={goToAdmin} variant="contained" className="button-white">
-            Área Admin
           </Button>
         </ButtonArea>
       </LateralMenu>

@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: ${mainColors.fundo};
   color: white;
@@ -27,5 +27,47 @@ export const Container = styled.div`
       :hover{
         opacity: .5;
       }
+  }
+`
+
+export const Input = styled.input`
+  background-color: white;
+  color: ${mainColors.secundario};
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  height: 45px;
+  font-size: 1.2em;
+`
+export const Select = styled.select`
+  background-color: white;
+  color: ${mainColors.secundario};
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  height: 45px;
+  font-size: 1.2em;
+`
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`
+
+export const ButtonForm = styled.button`
+  background-color: ${mainColors.destaque};
+  align-self: center;
+  color: ${mainColors.secundario};
+  width: 80px;
+  height: 45px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  :hover{
+    opacity: .5;
   }
 `

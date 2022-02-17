@@ -4,21 +4,12 @@ import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import IconLabeX from './IconLabeX';
 
-export default function HeaderAdminHome() {
+export default function Header(props) {
     const navigate = useNavigate()
 
     const goBack = () =>{
-        navigate('/')
+        navigate(props.path)
     }
-
-    const goToCreateTrip = () =>{
-        navigate('/admin/trips/create')
-    }
-
-    const logout = () => {
-        localStorage.removeItem("token")
-        navigate('/login')
-      }
 
   return (
     <ContainerHeader>
@@ -30,16 +21,6 @@ export default function HeaderAdminHome() {
             onClick={goBack}
             >
             Voltar
-            </Button>
-            <Button onClick={goToCreateTrip} color="primary" variant="contained" className="button-green">
-                Criar Viagem
-            </Button>
-            <Button
-            variant="contained"
-            className="button-white"
-            onClick={logout}
-            >
-            Logout
             </Button>
         </ButtonsHeader>
     </ContainerHeader>

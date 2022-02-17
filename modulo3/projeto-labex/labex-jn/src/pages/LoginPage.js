@@ -1,32 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { BaseURL } from "../constants/urls";
-import IconLabeX from "../components/IconLabeX";
-import Input from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
+import { ButtonForm, Form, Input } from "../components/styles/StyleGeral";
 import { useNavigate } from "react-router-dom";
-import { ContainerLogin } from "../components/styles/StyleLogin";
+import { ButtonArea, ContainerLogin } from "../components/styles/StyleLogin";
+import Header from "../components/Header";
+import { useForm } from "../hooks/useForm";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [inputPassword, setInputPassword] = useState("");
-  const [inputEmail, setInputEmail] = useState("");
+  const { form, onChange} = useForm({email:"", password:''})
 
-  const passwordChange = (e) => {
-    setInputPassword(e.target.value);
-  };
-  const emailChange = (e) => {
-    setInputEmail(e.target.value);
-  };
-
-  const onSubmit = () => {
-    const body = {
-      email: inputEmail,
-      password: inputPassword,
-    };
+  const handleSubmit = (event) => {
+    event.preventDefault()
     const url = `${BaseURL}login`;
+    const headers = {
+      'Content-Type': 'application/json'}
     axios
-      .post(url, body)
+      .post(url, form, {headers})
       .then((resp) => {
         localStorage.setItem("token", resp.data.token);
         navigate("/admin/trips/list", { replace: true });
@@ -38,33 +29,29 @@ export default function LoginPage() {
 
   return (
     <ContainerLogin>
-      <IconLabeX />
+      <Header path={"/"} />
       <h1>Login</h1>
-      <Input
-        className="text-field"
-        color="secondary"
-        label="Email"
-        variant="filled"
-        value={inputEmail}
-        onChange={emailChange}
-      />
-      <Input
-        className="text-field"
-        color="secondary"
-        label="Senha"
-        variant="filled"
-        value={inputPassword}
-        onChange={passwordChange}
-        type="password"
-      />
-      <Button
-        onClick={onSubmit}
-        color="primary"
-        variant="contained"
-        className="button-green"
-      >
-        Entrar
-      </Button>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          placeholder="Email"
+          type="email"
+          required
+          name="email"
+          value={form.email}
+          onChange={onChange}
+        />
+        <Input
+          placeholder="Senha"
+          name="password"
+          value={form.password}
+          onChange={onChange}
+          type="password"
+          required
+        />
+        <ButtonArea>
+          <ButtonForm>ENTRAR</ButtonForm>
+        </ButtonArea>
+      </Form>
     </ContainerLogin>
   );
 }
