@@ -4,18 +4,13 @@ import { mainColors } from "../../constants/colors";
 export const ContainerTripDetails = styled.div`
     display: flex;
     flex-direction: column;
-`
-
-export const ButtonArea = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    border-bottom: 1px solid white;
+    .loading{
+        align-self: center;
+    }
 `
 export const Title = styled.div`
     border-bottom: 1px solid white;
-    margin: 50px 10% 30px 10%;
+    margin: 30px 10%;
     padding-bottom: 20px;
 `
 export const Area1 = styled.div`

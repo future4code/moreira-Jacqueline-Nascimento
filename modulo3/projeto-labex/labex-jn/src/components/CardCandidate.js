@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { mainColors } from "../constants/colors";
 import { Button } from "@material-ui/core";
 import axios from "axios";
 import { BaseURL } from "../constants/urls";
 import { useParams } from "react-router-dom";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 
 
 const Container = styled.div`
@@ -32,6 +40,17 @@ const AreaButtons = styled.div`
 
 export default function CardCandidate(props) {
     const pathParams = useParams();
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState('')
+
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+      props.loadingAgain()
+    };
 
   const onDecide = (approve) => {
     const url = `${BaseURL}trips/${pathParams.id}/candidates/${props.candidate.id}/decide`;
@@ -46,7 +65,12 @@ export default function CardCandidate(props) {
     axios
       .put(url, body, { headers })
       .then((resp) => {
-        console.log(resp.data);
+        if(approve){
+          setMessage('Candidato Aprovado')
+        } else{
+          setMessage('Candidato Reprovado')
+        }
+        setOpen(true)
       })
       .catch((err) => {
         console.log('Deu erro',err.response);
@@ -77,6 +101,11 @@ export default function CardCandidate(props) {
           Reprovar
         </Button>
       </AreaButtons>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="info">
+          {message}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 }

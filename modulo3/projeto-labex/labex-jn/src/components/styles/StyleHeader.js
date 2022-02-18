@@ -13,4 +13,7 @@ export const ContainerHeader = styled.div`
 
 export const ButtonsHeader = styled.div`
     display: flex;
+    .three-buttons{
+        flex-wrap: wrap;
+    }
 `

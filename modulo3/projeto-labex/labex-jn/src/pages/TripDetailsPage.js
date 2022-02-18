@@ -2,25 +2,26 @@ import React, { useState, useEffect } from "react";
 import { useProtectedPage } from "../hooks/useProtectedPage";
 import axios from "axios";
 import { BaseURL } from "../constants/urls";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   ApprovedArea,
   Area1,
   Area2,
-  ButtonArea,
   ContainerTripDetails,
   DescriptionArea,
   Title,
 } from "../components/styles/StyleTripDetails";
-import { Button } from "@material-ui/core";
-import IconLabeX from "../components/IconLabeX";
 import CardCandidate from "../components/CardCandidate";
+import Header from "../components/Header";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function TripDetailsPage() {
   useProtectedPage();
   const [trip, setTrip] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const pathParams = useParams();
-  const navigate = useNavigate();
+  const [loadingAgain, setLoadingAgain] = useState(false)
 
   useEffect(() => {
     const url = `${BaseURL}trip/${pathParams.id}`;
@@ -28,65 +29,74 @@ export default function TripDetailsPage() {
     const headers = {
       auth: token,
     };
+    setIsLoading(true);
     axios
       .get(url, { headers })
       .then((resp) => {
-        console.log(resp.data);
+        setIsLoading(false);
         setTrip(resp.data.trip);
       })
       .catch((err) => {
-        console.log(err.response);
+        setIsLoading(false);
+        setError(err.response);
       });
-  }, []);
+  }, [loadingAgain]);
 
-  const goBack = () => {
-    navigate(-1);
-  };
+  const onLoad = () =>{
+    setLoadingAgain(!loadingAgain)
+  }
 
   return (
     <ContainerTripDetails>
-      <ButtonArea>
-        <IconLabeX />
-        <Button onClick={goBack} variant="contained" className="button-white">
-          Voltar
-        </Button>
-      </ButtonArea>
-      <Title>{trip && trip.name && <h1>{trip.name}</h1>}</Title>
-      <Area1>
-        {trip && trip.name && (
-          <DescriptionArea>
-            <p>
-              <b>{trip.date}</b>
-            </p>
-            <p>{trip.description}</p>
-            <p>
-              Duração: <b>{trip.durationInDays}</b> dias
-            </p>
-          </DescriptionArea>
-        )}
-        <ApprovedArea>
-          <h3>Candidatos Aprovados:</h3>
-          {trip && trip.approved && (trip.approved.length === 0 ? (
-            <p>Nenhum candidato aprovado</p>
-          ) : (
-            <ol>{trip.approved.map((item) => {
-              return <li key={item.id}>{item.name}, {item.age}, {item.country}</li>;
-            })}</ol>
-          ))}
-        </ApprovedArea>
-      </Area1>
-      <Area2>
+      <Header path={-1} />
+      {isLoading && <CircularProgress className="loading" color="primary" />}
+      {!isLoading && error && <p>Ocorreu um erro</p>}
+      {!isLoading && trip && trip.name && (
+        <div>
+          <Title>
+            <h1>{trip.name}</h1>
+          </Title>
+          <Area1>
+            <DescriptionArea>
+              <p>
+                <b>{trip.date}</b>
+              </p>
+              <p>{trip.description}</p>
+              <p>
+                Duração: <b>{trip.durationInDays}</b> dias
+              </p>
+            </DescriptionArea>
+            <ApprovedArea>
+              <h3>Candidatos Aprovados:</h3>
+              {trip.approved.length === 0 ? (
+                <p>Nenhum candidato aprovado</p>
+              ) : (
+                <ol>
+                  {trip.approved.map((item) => {
+                    return (
+                      <li key={item.id}>
+                        <b>{item.name}</b>, {item.age}, {item.country}
+                      </li>
+                    );
+                  })}
+                </ol>
+              )}
+            </ApprovedArea>
+          </Area1>
+          <Area2>
             <h2>Candidatos Pendentes:</h2>
-              <div>
-              {trip && trip.candidates && (trip.candidates.length === 0 ? (
+            <div>
+              {trip.candidates.length === 0 ? (
                 <p>Nenhum candidato</p>
               ) : (
                 trip.candidates.map((item) => {
-                  return <CardCandidate key={item.id} candidate={item} />;
+                  return <CardCandidate loadingAgain={onLoad} key={item.id} candidate={item} />;
                 })
-              ))}
+              )}
             </div>
-      </Area2>
+          </Area2>
+        </div>
+      )}
     </ContainerTripDetails>
   );
 }

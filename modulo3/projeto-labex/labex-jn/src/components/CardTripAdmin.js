@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import { mainColors } from "../constants/colors";
 import { Button } from "@material-ui/core";
@@ -16,7 +16,7 @@ const Container = styled.div`
   border-radius: 10px;
   color: ${mainColors.secundario};
   box-shadow: rgb(117 117 117 / 77%) 0px 2px 10px 0px;
-  display: flex;
+  display: ${props => props.displayCard};
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
@@ -31,6 +31,7 @@ const AreaButtons = styled.div`
 
 export default function CardTripAdmin(props) {
     const navigate = useNavigate()
+    const [displayCard, setDisplayCard] = useState('flex')
 
     const goToDetails = () =>{
         navigate(`/admin/trips/${props.trip.id}`)
@@ -43,18 +44,20 @@ export default function CardTripAdmin(props) {
       "Content-Type": "application/json",
       'auth': token,
     };
-    axios
+    if (window.confirm("Deseja apagar essa viagem?")){
+      axios
       .delete(url, { headers })
       .then((resp) => {
-        console.log(resp.data);
+        setDisplayCard('none');
       })
       .catch((err) => {
         console.log('Deu erro',err.response);
       });
+    }
   };
 
   return (
-    <Container>
+    <Container displayCard={displayCard}>
       <h3>{props.trip.name}</h3>
       <AreaButtons>
         <Button

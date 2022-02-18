@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   width: 100%;
+  max-width: 100vw;
   height: 100vh;
   background-color: ${mainColors.fundo};
   color: white;

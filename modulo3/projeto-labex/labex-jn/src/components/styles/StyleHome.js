@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { mainColors } from "../../constants/colors";
 import fundoHome from "../../assets/fundoHome.jpg"
 
 export const ContainerHome = styled.div`
@@ -37,6 +36,9 @@ export const ImageArea = styled.div`
     background-size: cover;
     background-position: center;
     background-image: url(${fundoHome});
+    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+      display: none;
+    }
 `
 
 export const TitleSubtitle = styled.div`

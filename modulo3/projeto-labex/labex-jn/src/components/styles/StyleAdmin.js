@@ -11,4 +11,15 @@ export const TripsArea = styled.div`
     flex-wrap: wrap;
     background-color: ${mainColors.fundo};
     justify-content: space-around;
+    img{
+        border-radius: 50%;
+    }
+`
+
+export const ButtonsArea = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 `
