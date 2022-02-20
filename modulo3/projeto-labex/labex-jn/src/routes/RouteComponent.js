@@ -7,6 +7,7 @@ import AdminHomePage from '../pages/AdminHomePage/AdminHomePage'
 import ListTripsPage from '../pages/ListTripsPage/ListTripsPage'
 import CreateTripPage from '../pages/CreateTripPage/CreateTripPage'
 import TripDetailsPage from '../pages/TripDetailsPage/TripDetailsPage'
+import ErrorPage from '../pages/ErrorPage'
 
 export default function RouteComponent() {
   return (
@@ -19,6 +20,7 @@ export default function RouteComponent() {
           <Route path='/admin/trips/list' element={<AdminHomePage />} />
           <Route path='/admin/trips/create' element={<CreateTripPage />} />
           <Route path='/admin/trips/:id' element={<TripDetailsPage />} />
+          <Route path='*' element={<ErrorPage/>} />
         </Routes>
     </BrowserRouter>
   )
