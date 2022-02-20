@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { ContainerForm } from "../components/styles/StyleApplicationForm";
-import Header from "../components/Header";
+import { ContainerForm } from "./StyleApplicationForm";
+import Header from "../../components/Header";
 import {
   ButtonForm,
   Form,
   Input,
   Select,
-} from "../components/styles/StyleGeral";
-import { useForm } from "../hooks/useForm";
-import useRequestData from "../hooks/useRequestData";
-import { BaseURL } from "../constants/urls";
-import Countries from "../components/Countries";
+} from "../../components/styles/StyleGeral";
+import { useForm } from "../../hooks/useForm";
+import useRequestData from "../../hooks/useRequestData";
+import { BaseURL } from "../../constants/urls";
+import Countries from "../../components/Countries";
 import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";

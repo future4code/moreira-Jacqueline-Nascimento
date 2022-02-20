@@ -1,14 +1,14 @@
 import React from "react";
-import { useProtectedPage } from "../hooks/useProtectedPage";
-import Header from "../components/Header";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+import Header from "../../components/Header";
 import {
   ButtonsArea,
   ContainerAdminHome,
   TripsArea,
-} from "../components/styles/StyleAdmin";
-import { BaseURL } from "../constants/urls";
-import useRequestData from "../hooks/useRequestData";
-import CardTripAdmin from "../components/CardTripAdmin";
+} from "./StyleAdmin";
+import { BaseURL } from "../../constants/urls";
+import useRequestData from "../../hooks/useRequestData";
+import CardTripAdmin from "../../components/CardTripAdmin";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import CircularProgress from '@material-ui/core/CircularProgress';

@@ -5,11 +5,11 @@ import {
   ImageArea,
   LateralMenu,
   TitleSubtitle,
-} from "../components/styles/StyleHome";
+} from "./StyleHome";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import foguete from "../assets/foguete.gif";
-import IconLabeX from "../components/IconLabeX";
+import foguete from "../../assets/foguete.gif";
+import IconLabeX from "../../components/IconLabeX";
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import LockIcon from '@material-ui/icons/Lock';
 
@@ -46,7 +46,7 @@ export default function HomePage() {
             Encontre sua viagem dos sonhos e diga-nos porque você a merece.
           </h3>
         </TitleSubtitle>
-        <img src={foguete} />
+        <img alt="gif-foguete" src={foguete} />
         <ButtonArea>
           <Button
             onClick={goToTrips}

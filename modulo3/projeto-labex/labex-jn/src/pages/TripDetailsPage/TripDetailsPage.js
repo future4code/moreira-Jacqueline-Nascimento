@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useProtectedPage } from "../hooks/useProtectedPage";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 import axios from "axios";
-import { BaseURL } from "../constants/urls";
+import { BaseURL } from "../../constants/urls";
 import { useParams } from "react-router-dom";
 import {
   ApprovedArea,
@@ -10,9 +10,9 @@ import {
   ContainerTripDetails,
   DescriptionArea,
   Title,
-} from "../components/styles/StyleTripDetails";
-import CardCandidate from "../components/CardCandidate";
-import Header from "../components/Header";
+} from "./StyleTripDetails";
+import CardCandidate from "../../components/CardCandidate";
+import Header from "../../components/Header";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function TripDetailsPage() {

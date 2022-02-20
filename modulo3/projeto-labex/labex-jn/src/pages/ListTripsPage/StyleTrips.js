@@ -21,9 +21,9 @@ export const MainTrips = styled.div`
 export const TripsArea = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-top: 10px;
+  padding: 10px;
   background-color: ${mainColors.fundo};
-  justify-content: space-around;
+  justify-content: center;
   img {
     border-radius: 50%;
   }

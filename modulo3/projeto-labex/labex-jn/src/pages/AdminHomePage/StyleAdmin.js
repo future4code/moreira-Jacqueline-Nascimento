@@ -10,7 +10,7 @@ export const TripsArea = styled.div`
     display: flex;
     flex-wrap: wrap;
     background-color: ${mainColors.fundo};
-    justify-content: space-around;
+    justify-content: center;
     img{
         border-radius: 50%;
     }

@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios";
-import { BaseURL } from "../constants/urls";
-import { ButtonForm, Form, Input } from "../components/styles/StyleGeral";
+import { BaseURL } from "../../constants/urls";
+import { ButtonForm, Form, Input } from "../../components/styles/StyleGeral";
 import { useNavigate } from "react-router-dom";
-import { ButtonArea, ContainerLogin } from "../components/styles/StyleLogin";
-import Header from "../components/Header";
-import { useForm } from "../hooks/useForm";
+import { ButtonArea, ContainerLogin } from "./StyleLogin";
+import Header from "../../components/Header";
+import { useForm } from "../../hooks/useForm";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 

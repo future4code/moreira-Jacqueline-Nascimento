@@ -1,14 +1,14 @@
 import React from "react";
-import CardTrip from "../components/CardTrip";
-import Header from "../components/Header";
+import CardTrip from "../../components/CardTrip";
+import Header from "../../components/Header";
 import {
   ButtonsArea,
   ContainerTrips,
   MainTrips,
   TripsArea,
-} from "../components/styles/StyleTrips";
-import { BaseURL } from "../constants/urls";
-import useRequestData from "../hooks/useRequestData";
+} from "./StyleTrips";
+import { BaseURL } from "../../constants/urls";
+import useRequestData from "../../hooks/useRequestData";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
