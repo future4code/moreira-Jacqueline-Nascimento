@@ -8,7 +8,6 @@ export const useProtectedPage = () => {
         const token = localStorage.getItem("token")
         if (token === null){
           navigate('/login')
-          console.log("não está logado")
         }
       },[navigate])
 }
