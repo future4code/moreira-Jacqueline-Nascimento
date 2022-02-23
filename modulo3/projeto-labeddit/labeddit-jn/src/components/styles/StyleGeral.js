@@ -10,9 +10,11 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${mainColors.fundo};
   color: ${mainColors.principal};
 `
@@ -47,8 +49,9 @@ export const Form = styled.form`
 export const ButtonForm = styled.button`
   background-image: linear-gradient(to bottom left, ${mainColors.azul}, ${mainColors.rosa});
   align-self: center;
+  margin: 10px;
   color: ${mainColors.fundo};
-  width: 80px;
+  width: 200px;
   height: 45px;
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

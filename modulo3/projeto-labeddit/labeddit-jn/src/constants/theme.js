@@ -1,12 +1,14 @@
 import { createTheme } from '@material-ui/core/styles';
+import { mainColors } from './colors';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#993A43',
+      main: mainColors.principal,
+      contrastText: mainColors.fundo
     },
     secondary: {
-      main: '#427C99',
+      main: mainColors.secundario,
     }
   },
 });

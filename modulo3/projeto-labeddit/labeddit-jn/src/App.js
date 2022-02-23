@@ -1,14 +1,22 @@
+import { useState } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { Container, GlobalStyle } from './components/styles/StyleGeral';
 import { theme } from './constants/theme';
 import RouteComponent from './routes/RouteComponent';
+import Header from './components/Header';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
+  const token = localStorage.getItem("token")
+  const [textButton, setTextButton] = useState(token?"Logout":"Login")
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <GlobalStyle />
-        <RouteComponent />
+        <BrowserRouter>
+          <Header textButton={textButton} setTextButton={setTextButton} />
+          <RouteComponent setTextButton={setTextButton} />
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );

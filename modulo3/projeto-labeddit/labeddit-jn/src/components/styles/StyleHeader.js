@@ -1,12 +1,19 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { mainColors } from "../../constants/colors";
 
 export const ContainerHeader = styled.div`
     width: 100%;
     background-image: linear-gradient(to bottom left, ${mainColors.azul}, ${mainColors.rosa});
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    .margin-right{
+        margin-right: 10px;
+    }
+    position: sticky;
+    top: 0;
 `
 export const Title = styled.h1`
-    padding: 20px;
     color: ${mainColors.fundo};
 `

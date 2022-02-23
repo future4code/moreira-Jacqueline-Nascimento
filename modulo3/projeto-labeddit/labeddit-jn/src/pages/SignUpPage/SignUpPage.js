@@ -1,7 +1,17 @@
-import React from 'react'
+import React from "react";
+import { ContainerSignUp } from "./StyleSignUp";
+import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
+import SignUpForm from "./SignUpForm";
+import login from '../../assets/login.png'
 
-export default function SignUpPage() {
+export default function SignUpPage({setTextButton}) {
+  useUnprotectedPage()
+
+  
   return (
-    <div>SignUpPage</div>
-  )
+    <ContainerSignUp>
+      <img src={login} alt='icone de login' />
+      <SignUpForm setTextButton={setTextButton} />
+    </ContainerSignUp>
+  );
 }
