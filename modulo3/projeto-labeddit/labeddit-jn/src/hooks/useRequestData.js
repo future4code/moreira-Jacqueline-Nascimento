@@ -23,5 +23,5 @@ export default function useRequestData(initialData, url) {
         setError(err.response);
       });
   }, [url]);
-  return {data, isLoading, error};
+  return [data, isLoading, error];
 }

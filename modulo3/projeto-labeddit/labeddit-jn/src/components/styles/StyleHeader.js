@@ -13,6 +13,7 @@ export const ContainerHeader = styled.div`
     }
     position: sticky;
     top: 0;
+    z-index: 2;
 `
 export const Title = styled.h1`
     color: ${mainColors.fundo};
