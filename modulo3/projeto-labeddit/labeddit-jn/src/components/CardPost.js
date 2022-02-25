@@ -10,45 +10,63 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import { goToPost } from "../routes/coordinator";
 import { useNavigate } from "react-router-dom";
-import { changePostVote, createPostVote, deletePostVote } from "../services/posts";
+import {
+  changePostVote,
+  createPostVote,
+  deletePostVote,
+} from "../services/posts";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
-export default function CardPost({ post }) {
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+export default function CardPost({ post, setInfoPost }) {
   const navigate = useNavigate();
   const [userVote, setUserVote] = useState(post.userVote);
   const [voteSum, setVoteSum] = useState(Number(post.voteSum));
-  const [colorButtonUp, setColorButtonUp] = useState("default")
-  const [colorButtonDown, setColorButtonDown] = useState("default")
+  const [colorButtonUp, setColorButtonUp] = useState("default");
+  const [colorButtonDown, setColorButtonDown] = useState("default");
+  const [open, setOpen] = useState(false);
 
-  useEffect(()=>{
-    if (userVote===1){
-      setColorButtonUp("primary")
-    } else if (userVote===-1){
-      setColorButtonDown("primary")
+  useEffect(() => {
+    if (userVote === 1) {
+      setColorButtonUp("primary");
+    } else if (userVote === -1) {
+      setColorButtonDown("primary");
     }
-  },[userVote])
+  }, [userVote]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
   const onClickUp = () => {
     const body = {
       direction: 1,
     };
     if (userVote) {
-      if (userVote===-1){
-        changePostVote(body, post.id)
-        setUserVote(1)
-        setVoteSum(voteSum+2)
-        setColorButtonUp("primary")
-        setColorButtonDown("default")
-      } else if (userVote===1){
-        deletePostVote(post.id)
-        setUserVote(0)
-        setVoteSum(voteSum-1)
-        setColorButtonUp("default")
+      if (userVote === -1) {
+        changePostVote(body, post.id, setOpen);
+        setUserVote(1);
+        setVoteSum(voteSum + 2);
+        setColorButtonUp("primary");
+        setColorButtonDown("default");
+      } else if (userVote === 1) {
+        deletePostVote(post.id, setOpen);
+        setUserVote(0);
+        setVoteSum(voteSum - 1);
+        setColorButtonUp("default");
       }
     } else {
-      createPostVote(body, post.id);
-      setUserVote(1)
-      setVoteSum(voteSum+1)
-      setColorButtonUp("primary")
+      createPostVote(body, post.id, setOpen);
+      setUserVote(1);
+      setVoteSum(voteSum + 1);
+      setColorButtonUp("primary");
     }
   };
 
@@ -57,27 +75,28 @@ export default function CardPost({ post }) {
       direction: -1,
     };
     if (userVote) {
-      if (userVote===1){
-        changePostVote(body, post.id)
-        setUserVote(-1)
-        setVoteSum(voteSum-2)
-        setColorButtonDown("primary")
-        setColorButtonUp("default")
-      } else if (userVote===-1){
-        deletePostVote(post.id)
-        setUserVote(0)
-        setVoteSum(voteSum+1)
-        setColorButtonDown("default")
+      if (userVote === 1) {
+        changePostVote(body, post.id, setOpen);
+        setUserVote(-1);
+        setVoteSum(voteSum - 2);
+        setColorButtonDown("primary");
+        setColorButtonUp("default");
+      } else if (userVote === -1) {
+        deletePostVote(post.id, setOpen);
+        setUserVote(0);
+        setVoteSum(voteSum + 1);
+        setColorButtonDown("default");
       }
     } else {
-      createPostVote(body, post.id);
-      setUserVote(-1)
-      setVoteSum(voteSum-1)
-      setColorButtonDown("primary")
+      createPostVote(body, post.id, setOpen);
+      setUserVote(-1);
+      setVoteSum(voteSum - 1);
+      setColorButtonDown("primary");
     }
   };
 
   const onClickCard = () => {
+    setInfoPost(post)
     goToPost(navigate, post.id);
   };
   return (
@@ -101,6 +120,11 @@ export default function CardPost({ post }) {
         </div>
         <div>{post.commentCount || 0} comentários</div>
       </ButtonsArea>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          Ocorreu algum erro!
+        </Alert>
+      </Snackbar>
     </ContainerCard>
   );
 }

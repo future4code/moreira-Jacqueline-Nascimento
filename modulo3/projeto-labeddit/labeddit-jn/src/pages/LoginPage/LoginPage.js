@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import login from '../../assets/login.png'
 import LoginForm from "./LoginForm";
 import { goToSignUp } from "../../routes/coordinator";
+import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
 
 export default function LoginPage({setTextButton}) {
+  useUnprotectedPage();
   const navigate = useNavigate();
 
   return (

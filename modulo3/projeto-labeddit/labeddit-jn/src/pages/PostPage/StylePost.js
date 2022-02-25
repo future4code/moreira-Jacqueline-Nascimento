@@ -7,6 +7,23 @@ export const ContainerPost= styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    h1{
+      margin-bottom: 20px;
+      word-wrap: break-word;
+      text-align: center;
+      width: 80%;
+    }
+    h3{
+      margin-bottom: 20px;
+      width: 80%;
+      text-align: center;
+      word-wrap: break-word;
+    }
+    h2{
+      text-align: center;
+      word-wrap: break-word;
+      width: 80%;
+    }
 `
 
 export const ContainerComments = styled.div`
@@ -14,7 +31,8 @@ export const ContainerComments = styled.div`
     flex-direction: row-reverse;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    flex-grow: 1;
 `
 
 export const InputText = styled.textarea`

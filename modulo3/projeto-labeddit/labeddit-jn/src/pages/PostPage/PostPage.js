@@ -1,29 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
 import { useParams } from 'react-router-dom'
 import { baseURL } from '../../constants/urls'
 import useRequestData from '../../hooks/useRequestData'
-import CardPost from '../../components/CardPost'
 import CardComment from '../../components/CardComment'
 import { ContainerComments, ContainerPost } from './StylePost'
 import PostForm from './PostForm'
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default function PostPage() {
+export default function PostPage({infoPost}) {
   useProtectedPage()
   const params = useParams()
-  const [posts, isLoading2, error2] = useRequestData([], `${baseURL}posts`)
-  const [data, isLoading, error] = useRequestData([], `${baseURL}posts/${params.id}/comments`)
-  const post = posts?.filter((item)=>item.id===params.id)
+  const [recharge, setRecharge] = useState(0)
+  const [data, isLoading, error] = useRequestData([], `${baseURL}posts/${params.id}/comments` , recharge)
+  
   const commentList = data.map((item)=>{
     return <CardComment key={item.id} post={item} />
   })
   return (
     <ContainerPost>
-      {post.length===1 && <CardPost key={post[0].id} post={post[0]} />}
-      <PostForm id={params.id} />
+      <h1>{infoPost.title}</h1>
+      <h3>{infoPost.body}</h3>
+      <h2>De: {infoPost.username}</h2>
+      <PostForm recharge={recharge} setRecharge={setRecharge} id={params.id} />
       <h2>Comentários:</h2>
       <ContainerComments>
-        {commentList}
+        {isLoading && <CircularProgress color="primary" />}
+        {!isLoading && error && <p>Ocorreu um erro</p>}
+        {!isLoading && commentList && (commentList.length === 0?'Nenhum Comentário':commentList)}
       </ContainerComments>
     </ContainerPost>
   )

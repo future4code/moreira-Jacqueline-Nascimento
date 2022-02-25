@@ -9,13 +9,14 @@ import { BrowserRouter } from 'react-router-dom';
 function App() {
   const token = localStorage.getItem("token")
   const [textButton, setTextButton] = useState(token?"Logout":"Login")
+  const [infoPost, setInfoPost] = useState({})
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <GlobalStyle />
         <BrowserRouter>
           <Header textButton={textButton} setTextButton={setTextButton} />
-          <RouteComponent setTextButton={setTextButton} />
+          <RouteComponent infoPost={infoPost} setInfoPost={setInfoPost} setTextButton={setTextButton} />
         </BrowserRouter>
       </Container>
     </ThemeProvider>

@@ -13,6 +13,19 @@ export const ContainerPosts = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
+  .arrow-back{
+    position: fixed;
+    bottom: 10vh;
+    left: 1vw;
+    z-index: 2;
+  }
+  .arrow-forward{
+    position: fixed;
+    bottom: 10vh;
+    right: 1vw;
+    z-index: 2;
+  }
 `;
 export const ContainerCreatePost = styled.div`
   display: flex;
@@ -23,6 +36,7 @@ export const ContainerCreatePost = styled.div`
   padding: 20px;
   border-radius: 20px;
   text-align: center;
+  box-shadow: 3px 4px 10px 5px ${mainColors.principal};
 `;
 
 export const InputText = styled.textarea`

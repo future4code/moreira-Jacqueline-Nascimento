@@ -1,18 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonForm, Form, Input } from "../../components/styles/StyleGeral";
 import { useForm } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import { postSignUp } from "../../services/users";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
-export default function SignUpForm({setTextButton}) {
-  const { form, onChange } = useForm({username:'', email: "", password: "" });
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+export default function SignUpForm({ setTextButton }) {
+  const { form, onChange, cleanFields } = useForm({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState(undefined);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    cleanFields();
+    setOpen(false);
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    postSignUp(form, navigate, setTextButton)
+    postSignUp(form, navigate, setTextButton, setError, setOpen);
   };
   return (
+    <div>
       <Form onSubmit={onSubmit}>
         <Input
           name="username"
@@ -39,5 +60,13 @@ export default function SignUpForm({setTextButton}) {
         />
         <ButtonForm>CRIAR</ButtonForm>
       </Form>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          {error && (typeof error === "string"
+            ? error
+            : `${error.message}\nÉ possível que a senha seja muito pequena`)}
+        </Alert>
+      </Snackbar>
+    </div>
   );
 }
