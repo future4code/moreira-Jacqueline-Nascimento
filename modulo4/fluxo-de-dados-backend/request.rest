@@ -1,0 +1,27 @@
+GET http://localhost:3003/test
+content-type: application/json
+
+###
+POST http://localhost:3003/produtos
+content-type: application/json
+
+{
+    "name": "salgadinhos",
+    "price": 10
+}
+
+###
+GET http://localhost:3003/produtos
+content-type: application/json
+
+###
+PUT http://localhost:3003/produtos/8elaw8zoi
+content-type: application/json
+
+{
+    "price": 10
+}
+
+###
+DELETE  http://localhost:3003/produtos/bc2c0au7p
+content-type: application/json
