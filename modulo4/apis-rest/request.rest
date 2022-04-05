@@ -1,0 +1,22 @@
+GET http://localhost:3003/users
+content-type: application/json
+
+###
+
+GET http://localhost:3003/users/normal
+content-type: application/json
+
+###
+GET http://localhost:3003/users?nome=Coragem
+content-type: application/json
+
+###
+PUT http://localhost:3003/users
+content-type: application/json
+
+{
+    "name": "Elsa",
+    "email": "elsa@gmail.com",
+    "type": "ADMIN",
+    "age": 28
+}
