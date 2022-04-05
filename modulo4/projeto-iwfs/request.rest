@@ -15,3 +15,12 @@ Content-Type: application/json
 ###
 GET http://localhost:3003/users/10291540406
 Content-Type: application/json
+
+###
+PUT http://localhost:3003/users/10291540406
+Content-Type: application/json
+
+{
+    "name": "Jacqueline Nascimento",
+    "balance": 3000
+}

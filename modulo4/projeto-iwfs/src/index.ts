@@ -64,7 +64,7 @@ app.post('/users',(req, res)=>{
 app.get("/users",(req, res)=>{
     res.status(200).send(accounts)
 })
-// Retorn saldo do usuário
+// Retorna saldo do usuário
 app.get("/users/:cpf",(req, res)=>{
     let newError:number = 400
     try {
@@ -78,6 +78,52 @@ app.get("/users/:cpf",(req, res)=>{
         const user = accounts[indexCPF]
         res.status(200).send(`O seu saldo é R$${user.balance.toFixed(2)}`)
     }   catch (error: any) {
+        res.status(newError).send(error.message)
+    }
+})
+// Altera saldo do usuário
+app.put('/users/:cpf', (req, res)=>{
+    let newError:number = 400
+    try {
+        const indexCPF = accounts.findIndex((item)=>{
+            return item.CPF === Number(req.params.cpf)
+        })
+        if (indexCPF === -1){
+            newError = 404
+            throw new Error("Usuário não encontrado")
+        }
+        if(!req.body.name || !req.body.balance){
+            newError = 401
+            throw new Error("Alguns dos dados não foram recebidos")
+        }
+        if(typeof(req.body.name)!== 'string'){
+            newError = 422
+            throw new Error("O 'name' deve ser uma 'string'")
+        }
+        if(typeof(req.body.balance)!== 'number'){
+            newError = 422
+            throw new Error("O 'balance' deve ser um 'number'")
+        }
+        if (accounts[indexCPF].name!== req.body.name){
+            newError = 401
+            throw new Error("O 'name' não confere com o CPF dado")
+        }
+        const newList = accounts.map((item)=>{
+            if (item.CPF === Number(req.params.cpf)){
+                const today = new Date(Date.now())
+                item.statements.push({
+                    value: req.body.balance,
+                    description: "Depósito de dinheiro",
+                    date: today.toLocaleDateString()
+                })
+                return {...item, balance:item.balance+req.body.balance,
+                        statements:item.statements}
+            } else{
+                return item
+            }
+        })
+        res.status(200).send(newList)
+    }catch (error: any) {
         res.status(newError).send(error.message)
     }
 })
