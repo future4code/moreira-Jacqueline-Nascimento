@@ -1,0 +1,11 @@
+POST http://localhost:3003/user
+content-type: application/json
+
+{
+	"name": "Astro Dev",
+	"nickname": "astrodev",
+	"email": "astro@dev.com"
+}
+###
+GET http://localhost:3003/user/v60etuvae
+content-type: application/json
